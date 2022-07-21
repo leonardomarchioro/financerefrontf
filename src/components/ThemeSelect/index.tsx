@@ -21,9 +21,9 @@ const ThemeSelect: React.FC = () => {
     <Box>
       <Button className={theme.mode} onClick={handleTheme}>
         {theme.mode === "light" ? (
-          <HiLightBulb color="#edfd0e" size={20} />
+          <HiLightBulb size={20} />
         ) : (
-          <HiOutlineLightBulb color="#FFFFFF" size={20} />
+          <HiOutlineLightBulb size={20} />
         )}
       </Button>
     </Box>

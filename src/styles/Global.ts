@@ -9,12 +9,13 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         outline: 0;
         font-family: "Poppins", sans-serif;
-        
+        transition: all 0.5s ease;
     }
 
     #_next{
         width: 100vw;
         height: 100vh;
+        
     }
 
     button{

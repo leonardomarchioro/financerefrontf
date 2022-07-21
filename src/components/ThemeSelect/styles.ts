@@ -22,10 +22,23 @@ export const Button = styled.span`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  padding: 2px;
 
   box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 
   cursor: pointer;
+
+  > svg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 2px;
+    color: #f5ff62;
+    background-color: ${({ theme }) => theme.colors.grey};
+    transition: 0.5s;
+    &:hover {
+      background-color: #f5ff62;
+      color: ${({ theme }) => theme.colors.grey};
+    }
+  }
 `;

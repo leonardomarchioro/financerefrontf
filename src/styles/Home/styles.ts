@@ -33,6 +33,7 @@ export const Figure = styled.figure`
 export const ContainerText = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 90%;
   max-width: 500px;
   > h1 {
@@ -51,5 +52,18 @@ export const ContainerText = styled.div`
     font-weight: 800;
     font-size: 24px;
     cursor: pointer;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 3px;
+      background: ${({ theme }) => theme.textColors.titlePrimary};
+      transition: width 0.8s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 `;

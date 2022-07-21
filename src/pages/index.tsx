@@ -7,7 +7,7 @@ import Header from "../components/HeaderHome";
 
 import HomeImg from "../assets/home.png";
 
-import { Container, Main, Figure, ContainerText } from "../styles/Home/Home";
+import { Container, Main, Figure, ContainerText } from "../styles/Home/styles";
 
 const Home: NextPage = () => {
   return (
