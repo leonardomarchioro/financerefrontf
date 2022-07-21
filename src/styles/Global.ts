@@ -1,29 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+
+
     *{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         outline: 0;
+        font-family: "Poppins", sans-serif;
         
     }
 
     #_next{
         width: 100vw;
         height: 100vh;
-    }
-
-    :root{
-        --background-primary: #5A5A5A;
-        --background-secondary: #282928;
-
-        --title-primary:#FFFFFF;
-        --link-color:#01E1FF;
-        --text-color:#FFFFFF;
-
-        --entrance-color: #00FD65;
-        --exit-color: #FF0000;
     }
 
     button{
