@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import ThemeProvider from "../components/ThemeProvider";
 import { store } from "../store/index";
 
-import { GlobalStyle } from "../styles/Global";
+import { GlobalStyle, Body } from "../styles/Global";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <ThemeProvider>
           <GlobalStyle />
-          <Component {...pageProps} />
+          <Body>
+            <Component {...pageProps} />
+          </Body>
         </ThemeProvider>
       </Provider>
     </>

@@ -2,25 +2,24 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
   justify-content: flex-start;
+  gap: 50px;
   background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
-  overflow-y: auto;
 `;
 
 export const Main = styled.main`
-  width: 90%;
-  max-width: 1000px;
+  width: 95%;
+  max-width: 1200px;
 
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 5%;
+  gap: 10%;
 
   @media screen and (min-width: 768px) {
     gap: 20%;
@@ -31,7 +30,7 @@ export const Main = styled.main`
 `;
 
 export const Figure = styled.figure`
-  width: 60%;
+  width: 50%;
   @media screen and (max-width: 768px) {
     display: none;
   }

@@ -7,27 +7,37 @@ export const darkTheme = {
   textColors: {
     titlePrimary: "#2AD986",
     titleSecondary: "#2AD986",
-    subTitlePrimary: "#282928",
+    subTitlePrimary: "#000000",
     subTitleSecondary: "#FFFFFF",
     textColor: "#FFFFFF",
     linkColor: "#01E1FF",
   },
 
   buttonColor: {
-    entranceButton: "#2AD986",
+    entranceButton: "#21CC3C",
     exitButton: "#D92A2A",
     generalButtons: "#2AD986",
     backButton: "#2AD986",
   },
 
   typesColors: {
-    entrancecolor: "#36FF93",
-    exitcolor: "#FF3636",
+    entrancecolor: "#00FF75",
+    exitcolor: "#FF2727",
   },
 
   scoolBar: {
     background: "#5A5A5A",
     color: "#3D3E3D",
+  },
+
+  modalColors: {
+    backgroundColor: "#282928",
+    fontColor: "#FFFFFF",
+    buttonsColor: "#FFFFFF",
+  },
+
+  inputColors: {
+    backgroundColor: "#5A5A5A",
   },
 };
 
@@ -39,7 +49,7 @@ export const lightTheme = {
 
   textColors: {
     titlePrimary: "#36FF93",
-    titleSecondary: "#FFFFFF",
+    titleSecondary: "#000000",
     subTitlePrimary: "#FFFFFF",
     subTitleSecondary: "#282928",
     textColor: "#282928",
@@ -47,20 +57,29 @@ export const lightTheme = {
   },
 
   buttonColor: {
-    entranceButton: "#2AD986",
+    entranceButton: "#21CC3C",
     exitButton: "#D92A2A",
     generalButtons: "#FFFFFF",
     backButton: "#2AD986",
   },
 
   typesColors: {
-    entrancecolor: "#36FF93",
-    exitcolor: "#FF3636",
+    entrancecolor: "#00FF75",
+    exitcolor: "#FF2727",
   },
 
   scoolBar: {
     background: "#DAFFE9",
     color: "#90FFC4",
+  },
+
+  modalColors: {
+    backgroundColor: "#DAFFE9",
+    fontColor: "#000000",
+    buttonsColor: "#000000",
+  },
+  inputColors: {
+    backgroundColor: "#FFFFFF",
   },
 };
 

@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   height: 78px;
-
+  margin-bottom: 5px;
   > label {
     width: 100%;
     color: ${({ theme }) => theme.textColors.textColor};
@@ -21,8 +21,13 @@ export const Container = styled.div`
     border-radius: 4px;
     border: 1px solid;
     border-color: ${({ error }: { error: boolean }) =>
-      error ? "#ff0c0c" : "#9e9e9e"};
+      error ? "#ff0c0c" : ({ theme }) => theme.inputColors.backgroundColor};
     padding: 5px 8px;
+    background-color: ${({ theme }) => theme.inputColors.backgroundColor};
+    color: ${({ theme }) => theme.textColors.subTitleSecondary};
+    &::placeholder {
+      color: ${({ theme }) => theme.textColors.subTitleSecondary};
+    }
   }
   > svg {
     align-self: flex-end;
@@ -30,6 +35,7 @@ export const Container = styled.div`
     position: relative;
     top: -23px;
     cursor: pointer;
+    color: ${({ theme }) => theme.textColors.subTitleSecondary};
   }
 
   > div {

@@ -1,13 +1,13 @@
 import Image from "next/image";
 
 import AboutUs from "../assets/about.png";
-import GeneralHeader from "../components/GeneralHeader";
+import GeneralHeader from "../components/Headers/GeneralHeader";
 import { Container, Main, Figure, ContainerText } from "../styles/About/styles";
 
 const About: React.FC = () => {
   return (
     <Container>
-      <GeneralHeader path="/" />
+      <GeneralHeader />
       <Main>
         <ContainerText>
           <h1>Sobre nós!</h1>

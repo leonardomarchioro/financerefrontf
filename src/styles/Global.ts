@@ -1,4 +1,10 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const Body = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
+`;
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -16,6 +22,12 @@ export const GlobalStyle = createGlobalStyle`
         width: 100vw;
         height: 100vh;
         
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+    
     }
 
     button{

@@ -1,5 +1,5 @@
-import GeneralHeader from "../components/GeneralHeader";
-import FormSignIn from "../components/SignInForm";
+import GeneralHeader from "../components/Headers/GeneralHeader";
+import FormSignIn from "../components/Forms/SignInForm";
 
 import SingnInImg from "../assets/login.png";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import { Container, Figure, Main } from "../styles/SignIn/styles";
 const SignIn: React.FC = () => {
   return (
     <Container>
-      <GeneralHeader path="/" />
+      <GeneralHeader />
       <Main>
         <FormSignIn />
         <Figure>

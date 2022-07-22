@@ -4,12 +4,12 @@ export const Container = styled.form`
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
   width: 95%;
-  height: 70%;
+  height: 620px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 40px;
+  gap: 45px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);
@@ -25,7 +25,7 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 25px;
 
   > div {
     width: 80%;
@@ -57,4 +57,12 @@ export const SpanText = styled.span`
       width: 100%;
     }
   }
+`;
+
+export const FooterForm = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 `;
