@@ -11,6 +11,7 @@ export const darkTheme = {
     subTitleSecondary: "#FFFFFF",
     textColor: "#FFFFFF",
     linkColor: "#01E1FF",
+    deactivate: "#FFFCFC",
   },
 
   buttonColor: {
@@ -54,6 +55,7 @@ export const lightTheme = {
     subTitleSecondary: "#282928",
     textColor: "#282928",
     linkColor: "#01E1FF",
+    deactivate: "#ABABAB",
   },
 
   buttonColor: {

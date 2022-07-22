@@ -1,7 +1,8 @@
 import HeaderDash from "../components/Headers/DahsboardHeader";
 import { useState } from "react";
 import AsideMenu from "../components/AsideMenu";
-import { Container } from "../styles/Dashboard/styles";
+import { Container, Main } from "../styles/Dashboard/styles";
+import MainTransactions from "../components/Transactions/MainTransactions";
 
 const Dashboard: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -11,7 +12,9 @@ const Dashboard: React.FC = () => {
       {showMenu && <AsideMenu setShowMenu={setShowMenu} />}
       <Container>
         <HeaderDash setShowMenu={setShowMenu} />
-        <main>MAIN</main>
+        <Main>
+          <MainTransactions />
+        </Main>
       </Container>
     </>
   );

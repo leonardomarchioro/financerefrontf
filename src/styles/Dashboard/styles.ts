@@ -6,8 +6,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 30px;
 
   background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
+`;
+
+export const Main = styled.main`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5%;
 `;

@@ -1,0 +1,38 @@
+export const transactions = [
+  {
+    id: "64b379c4-c2db-4d1d-b640-5592f3d54fb6",
+    title: "Salário ",
+    description: "Descrição da transação",
+    value: 1400,
+    category: "Salário",
+    date: "2022-03-05T03:00:00.000Z",
+    type: "entrance",
+  },
+  {
+    id: "e61a1a16-f098-4e60-9306-6f43ad2fd35c",
+    title: "Salário ",
+    description: "Descrição da transação",
+    value: 1400,
+    category: "Salário",
+    date: "2022-03-05T03:00:00.000Z",
+    type: "entrance",
+  },
+  {
+    id: "f5a63026-3b31-4f3e-be6f-8ccb21ab565d",
+    title: "Mercado",
+    description: "Descrição da transação",
+    value: 400,
+    category: "Alimentação",
+    date: "2022-06-04T03:00:00.000Z",
+    type: "exit",
+  },
+  {
+    id: "534eec79-2754-46df-8e86-5353bac8708e",
+    title: "Mercado",
+    description: "Descrição da transação",
+    value: 400,
+    date: "06/04/2022",
+    category: "Alimentação",
+    type: "exit",
+  },
+];
