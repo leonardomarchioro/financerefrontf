@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  z-index: 1;
-  position: fixed;
-  top: 0;
   width: 100%;
   height: 120px;
   display: flex;
@@ -67,7 +64,7 @@ export const MenuContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     > svg {
-      position: fixed;
+      position: absolute;
       top: 40px;
       right: 25px;
     }

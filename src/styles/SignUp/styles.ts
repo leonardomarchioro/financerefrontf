@@ -2,13 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 50px;
   background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
+
+  @media screen and (max-height: 720px) {
+    height: 100%;
+  }
 `;
 
 export const Main = styled.main`

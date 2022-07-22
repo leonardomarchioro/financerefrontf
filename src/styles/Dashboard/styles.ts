@@ -6,16 +6,21 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 30px;
 
-  background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
+  background-color: ${({ theme }) =>
+    theme.backgroundColors.dashboardBackground};
+
+  @media screen and (max-height: 720px) {
+    height: 100%;
+  }
 `;
 
 export const Main = styled.main`
   width: 90%;
+  height: 66%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 5%;
 `;

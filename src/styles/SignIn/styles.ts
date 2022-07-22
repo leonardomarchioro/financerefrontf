@@ -10,6 +10,10 @@ export const Container = styled.div`
   justify-content: flex-start;
   background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
   overflow-y: auto;
+
+  @media screen and (max-height: 620px) {
+    height: 100%;
+  }
 `;
 
 export const Main = styled.main`

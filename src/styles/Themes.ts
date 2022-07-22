@@ -2,6 +2,9 @@ export const darkTheme = {
   backgroundColors: {
     primaryBackground: "#5A5A5A",
     secondaryBackground: "#282928",
+    dashboardBackground: "#282928",
+    transactionsBackground: "#282928",
+    containerTransactions: "#5A5A5A",
   },
 
   textColors: {
@@ -46,6 +49,9 @@ export const lightTheme = {
   backgroundColors: {
     primaryBackground: "#FFFFFF",
     secondaryBackground: "#DAFFE9",
+    dashboardBackground: "#FFFFFF",
+    transactionsBackground: "#FFFFFF",
+    containerTransactions: "#DAFFE9",
   },
 
   textColors: {

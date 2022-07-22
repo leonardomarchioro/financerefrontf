@@ -1,21 +1,46 @@
-import { ITrasaction } from "../../../interfaces";
 import moment from "moment";
-import { ListContainer } from "./styles";
+import { useState } from "react";
+
+import { ITrasaction } from "../../../interfaces";
+import TransactionModal from "../../Modais/TransactionModal";
+
+import { Card, Content, Infos, ListContainer } from "./styles";
 
 const TransactionsList: React.FC<{ transactions: ITrasaction[] }> = ({
   transactions,
 }) => {
+  const [modal, setModal] = useState<boolean>(false);
+  const [valueModal, setValueModal] = useState<ITrasaction | undefined>();
+
+  const handleModal = (transaction: ITrasaction) => {
+    console.log(transaction);
+    setModal(true);
+    setValueModal(transaction);
+  };
+
   return (
-    <ListContainer>
-      {transactions.map((transaction) => (
-        <li key={transaction.id} className={transaction.type}>
-          <h1>{transaction.title}</h1>
-          <span>{transaction.category}</span>
-          <span>{moment(transaction.date).format("DD/MM/YYYY")}</span>
-          <span>{transaction.value}</span>
-        </li>
-      ))}
-    </ListContainer>
+    <>
+      {modal && (
+        <TransactionModal setModal={setModal} transaction={valueModal!} />
+      )}
+      <ListContainer>
+        {transactions.map((transaction) => (
+          <Card
+            key={transaction.id}
+            className={transaction.type}
+            onClick={() => handleModal(transaction)}
+          >
+            <h1>{transaction.title}</h1>
+            <Content>
+              <Infos>
+                <span>{moment(transaction.date).format("DD/MM/YYYY")}</span>
+                <span>{transaction.value}</span>
+              </Infos>
+            </Content>
+          </Card>
+        ))}
+      </ListContainer>
+    </>
   );
 };
 

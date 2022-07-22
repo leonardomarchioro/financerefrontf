@@ -9,6 +9,10 @@ export const Container = styled.div`
   justify-content: flex-start;
   gap: 40px;
   background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
+
+  @media screen and (max-height: 420px) {
+    height: 100%;
+  }
 `;
 
 export const Main = styled.main`

@@ -4,6 +4,25 @@ export const Body = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.backgroundColors.primaryBackground};
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: ${({ theme }) => theme.textColors.titlePrimary};
+  }
+
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: ${({ theme }) =>
+      theme.backgroundColors.containerTransactions};
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.scoolBar.color};
+    border-radius: 20px;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -40,25 +59,9 @@ export const GlobalStyle = createGlobalStyle`
     a{
         text-decoration: none;
     }
-
-
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: #5A5A5A;
+    ul {
+        list-style: none;
     }
 
-    *::-webkit-scrollbar {
-        width: 8px;
-    }
 
-    *::-webkit-scrollbar-track {
-        background-color: #5A5A5A;
-        
-    }
-
-    *::-webkit-scrollbar-thumb {
-        background-color: #282928;
-        border-radius: 20px;
-       
-    } 
 `;
