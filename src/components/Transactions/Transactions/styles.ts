@@ -8,6 +8,21 @@ export const ListContainer = styled.ul`
   overflow-y: auto;
   gap: 20px;
 
+  &::-webkit-scrollbar {
+    display: flex;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${({ theme }) =>
+      theme.backgroundColors.containerTransactions};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.scoolBar.color};
+    border-radius: 20px;
+  }
+
   .entrance {
     border-right: 20px solid ${({ theme }) => theme.typesColors.entrancecolor};
   }
@@ -23,6 +38,9 @@ export const ListContainer = styled.ul`
 
     .exit {
       border-right: 10px solid ${({ theme }) => theme.typesColors.exitcolor};
+    }
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 `;

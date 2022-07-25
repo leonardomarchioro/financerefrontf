@@ -9,20 +9,6 @@ export const Body = styled.div`
     scrollbar-width: thin;
     scrollbar-color: ${({ theme }) => theme.textColors.titlePrimary};
   }
-
-  *::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background-color: ${({ theme }) =>
-      theme.backgroundColors.containerTransactions};
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.scoolBar.color};
-    border-radius: 20px;
-  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -59,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     a{
         text-decoration: none;
     }
-    ul {
+    ul,li {
         list-style: none;
     }
 

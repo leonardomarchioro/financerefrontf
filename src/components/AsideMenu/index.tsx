@@ -13,48 +13,64 @@ import {
   TopMenu,
 } from "./styles";
 
+import { useDispatch } from "react-redux";
+import {
+  entranceModal,
+  exitModal,
+} from "../../store/modules/transactionModal/actions";
+
 interface IState {
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AsideMenu: React.FC<IState> = ({ setShowMenu }) => {
-  const handle = () => {
-    setShowMenu(false);
-  };
+  const dispatch = useDispatch();
 
   return (
-    <Container>
-      <TopMenu>
-        <ThemeSelect />
-        <IoClose onClick={handle} size={35} />
-      </TopMenu>
-      <MiddleMenu>
-        <ActionButton>
-          <span>Nova Entrada</span>
-          <BsBoxArrowUpRight size={30} />
-        </ActionButton>
-        <ActionButton>
-          <span>Nova Saída</span>
-          <BsBoxArrowInDownRight size={30} />
-        </ActionButton>
-        <ActionButton>
-          <span>Calculadora</span>
-          <MdOutlineCalculate size={30} />
-        </ActionButton>
-        <ActionButton>
-          <span>Gráficos</span>
-          <VscGraph size={30} />
-        </ActionButton>
-        <ActionButton>
-          <span>Filtrar</span>
-          <HiOutlineFilter size={30} />
-        </ActionButton>
-      </MiddleMenu>
-      <BottonMenu>
-        <span>Sair</span>
-        <MdLogout size={35} />
-      </BottonMenu>
-    </Container>
+    <>
+      <Container>
+        <TopMenu>
+          <ThemeSelect />
+          <IoClose onClick={() => setShowMenu(false)} size={35} />
+        </TopMenu>
+        <MiddleMenu>
+          <ActionButton
+            onClick={() => {
+              dispatch(entranceModal());
+              setShowMenu(false);
+            }}
+          >
+            <span>Nova Entrada</span>
+            <BsBoxArrowUpRight size={30} />
+          </ActionButton>
+          <ActionButton
+            onClick={() => {
+              dispatch(exitModal());
+              setShowMenu(false);
+            }}
+          >
+            <span>Nova Saída</span>
+            <BsBoxArrowInDownRight size={30} />
+          </ActionButton>
+          <ActionButton>
+            <span>Calculadora</span>
+            <MdOutlineCalculate size={30} />
+          </ActionButton>
+          <ActionButton>
+            <span>Gráficos</span>
+            <VscGraph size={30} />
+          </ActionButton>
+          <ActionButton>
+            <span>Filtrar</span>
+            <HiOutlineFilter size={30} />
+          </ActionButton>
+        </MiddleMenu>
+        <BottonMenu>
+          <span>Sair</span>
+          <MdLogout size={35} />
+        </BottonMenu>
+      </Container>
+    </>
   );
 };
 

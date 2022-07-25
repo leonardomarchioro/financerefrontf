@@ -34,7 +34,7 @@ const TransactionsList: React.FC<{ transactions: ITrasaction[] }> = ({
             <Content>
               <Infos>
                 <span>{moment(transaction.date).format("DD/MM/YYYY")}</span>
-                <span>{transaction.value}</span>
+                <span>${transaction.value.toFixed(2)}</span>
               </Infos>
             </Content>
           </Card>

@@ -18,9 +18,9 @@ const FormSignIn: React.FC = () => {
   const schema = yup.object().shape({
     email: yup
       .string()
-      .required("Email is required")
-      .email("Invalid format email"),
-    password: yup.string().required("Password is required"),
+      .required("Email é obrigatório")
+      .email("Formato de email inválido"),
+    password: yup.string().required("Senha é obrigatória"),
   });
 
   const {
