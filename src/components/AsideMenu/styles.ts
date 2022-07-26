@@ -1,19 +1,31 @@
 import styled from "styled-components";
+import { Modal } from "react-overlays";
+export const BackgroundLayer = styled.div`
+  position: fixed;
+  z-index: 1040;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
+`;
 
-export const Container = styled.div`
+export const Container = styled(Modal)`
   position: fixed;
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
   width: 300px;
   height: 100%;
   right: 0;
+  top: 0;
   box-shadow: -12px 0px 4px rgb(0 0 0 / 25%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 30px 10px;
-  z-index: 2;
+  z-index: 1040;
 
   @media screen and (max-width: 575px) {
     width: 100%;

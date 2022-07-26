@@ -56,6 +56,7 @@ const TransactionModal: React.FC = () => {
         onHide={close}
         show={!!transaction.id}
         renderBackdrop={renderBackdrop}
+        type={transaction.type}
       >
         <>
           <TopModal>

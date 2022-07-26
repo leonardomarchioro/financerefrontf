@@ -82,7 +82,6 @@ const NewTransactionModal: React.FC = () => {
 
   return (
     <ModalContent
-      className={modalManagement.type}
       show={!!modalManagement.type}
       onHide={close}
       renderBackdrop={renderBackdrop}

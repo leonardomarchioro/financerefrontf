@@ -12,7 +12,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <NewTransactionModal />
-      {showMenu && <AsideMenu setShowMenu={setShowMenu} />}
+      {showMenu && <AsideMenu setShowMenu={setShowMenu} showMenu={showMenu} />}
       <Container>
         <HeaderDash setShowMenu={setShowMenu} />
         <Main>
