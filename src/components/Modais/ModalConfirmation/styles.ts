@@ -1,35 +1,44 @@
 import styled from "styled-components";
+import { Modal } from "react-overlays";
 
 export const ContainerModal = styled.section`
   position: fixed;
+  z-index: 1080;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  z-index: 5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
 `;
 
-export const Modal = styled.section`
+export const ModalContent = styled(Modal)`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1080;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 30px;
-  background-color: ${({ theme }) =>
-    theme.backgroundColors.secondaryBackground};
+
   padding: 20px;
   min-width: 300px;
   width: 200px;
-  height: auto;
+  height: 180px;
 
+  background-color: ${({ theme }) =>
+    theme.backgroundColors.secondaryBackground};
   border-radius: 20px;
   color: ${({ theme }) => theme.textColors.titleSecondary};
-  z-index: 6;
 
   > h1 {
+    font-size: 18px;
     text-align: center;
   }
 `;

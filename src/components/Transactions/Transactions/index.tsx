@@ -1,28 +1,22 @@
 import moment from "moment";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setObjTransaction } from "../../../store/modules/transaction/actions";
 
 import { ITrasaction } from "../../../interfaces";
-import TransactionModal from "../../Modais/TransactionModal";
 
 import { Card, Content, Infos, ListContainer } from "./styles";
 
 const TransactionsList: React.FC<{ transactions: ITrasaction[] }> = ({
   transactions,
 }) => {
-  const [modal, setModal] = useState<boolean>(false);
-  const [valueModal, setValueModal] = useState<ITrasaction | undefined>();
+  const dispatch = useDispatch();
 
   const handleModal = (transaction: ITrasaction) => {
-    console.log(transaction);
-    setModal(true);
-    setValueModal(transaction);
+    dispatch(setObjTransaction(transaction));
   };
 
   return (
     <>
-      {modal && (
-        <TransactionModal setModal={setModal} transaction={valueModal!} />
-      )}
       <ListContainer>
         {transactions.map((transaction) => (
           <Card

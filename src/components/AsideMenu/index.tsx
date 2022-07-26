@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 import {
   entranceModal,
   exitModal,
-} from "../../store/modules/transactionModal/actions";
+} from "../../store/modules/modalManagement/actions";
 
 interface IState {
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;

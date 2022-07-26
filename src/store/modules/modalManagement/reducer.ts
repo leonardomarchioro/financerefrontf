@@ -1,6 +1,6 @@
 import { ENTRANCE_MODAL, EXIT_MODAL, CLOSE } from "./actionsTypes";
 
-const modalCreateTransactionReducer = (
+const modalManagementTransactionReducer = (
   state: { type: string } = { type: "" },
   action: { type: string }
 ) => {
@@ -23,4 +23,4 @@ const modalCreateTransactionReducer = (
   }
 };
 
-export default modalCreateTransactionReducer;
+export default modalManagementTransactionReducer;

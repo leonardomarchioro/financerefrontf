@@ -5,12 +5,26 @@ import {
   applyMiddleware,
 } from "redux";
 
-import themeReducer from "./modules/theme/reducer";
-import modalCreateTransactionReducer from "./modules/transactionModal/reducer";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const reducers = combineReducers({
+import themeReducer from "./modules/theme/reducer";
+import modalManagementTransactionReducer from "./modules/modalManagement/reducer";
+import transactionObjReducer from "./modules/transaction/reducer";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["modalManagement", "transactionValue"],
+};
+
+const rootReducers = combineReducers({
   theme: themeReducer,
-  modalCreate: modalCreateTransactionReducer,
+  modalManagement: modalManagementTransactionReducer,
+  transactionValue: transactionObjReducer,
 });
 
-export const store = createStore(reducers, applyMiddleware(thunk));
+const persistedReducer = persistReducer(persistConfig, rootReducers);
+
+export const store = createStore(persistedReducer, applyMiddleware(thunk));
+export const persistor = persistStore(store);

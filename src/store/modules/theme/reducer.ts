@@ -2,19 +2,18 @@ import { DARK_THEME, LIGHT_THEME } from "./actionTypes";
 
 const themeReducer = (
   state: { mode: string } = { mode: "light" },
-  action: { type: string }
+  action: { type: string; state: { mode: string } }
 ) => {
   switch (action.type) {
     case LIGHT_THEME:
-      state = { mode: "light" };
+      state = action.state;
       return state;
 
     case DARK_THEME:
-      state = { mode: "dark" };
+      state = action.state;
       return state;
 
     default:
-      state = { mode: "light" };
       return state;
   }
 };

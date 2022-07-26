@@ -1,41 +1,45 @@
 import styled from "styled-components";
+import { Modal } from "react-overlays";
 
 export const ContainerModal = styled.section`
   position: fixed;
+  z-index: 1040;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  z-index: 2;
-
-  .entrance {
-    border-top: 20px solid ${({ theme }) => theme.typesColors.entrancecolor};
-  }
-
-  .exit {
-    border-top: 20px solid ${({ theme }) => theme.typesColors.exitcolor};
-  }
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
 `;
 
-export const Modal = styled.div`
+export const ModalContent = styled(Modal)`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1040;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+
+  padding: 20px;
+  min-width: 310px;
+  width: 50%;
+  height: 450px;
+  border-radius: 20px;
+
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
-  padding: 20px;
-  min-width: 300px;
-  width: 30%;
-  height: auto;
-  max-height: 500px;
-  border-radius: 20px;
-  z-index: 3;
   color: ${({ theme }) => theme.textColors.titleSecondary};
+  border-top: 20px solid
+    ${({ theme, type }) =>
+      type === "entrance"
+        ? theme.typesColors.entrancecolor
+        : theme.typesColors.exitcolor};
 `;
 
 export const TopModal = styled.div`
@@ -71,7 +75,11 @@ export const ModalDescription = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-
+  padding: 5px;
   height: auto;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

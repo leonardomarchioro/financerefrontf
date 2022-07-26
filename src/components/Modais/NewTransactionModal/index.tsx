@@ -1,12 +1,26 @@
 import GeneralInput from "../../Inputs/GeneralInput";
-import { ContainerModal, Modal } from "./styles";
+import TextArea from "../../Inputs/TextArea";
+import Button from "../../Buttons/GeneralButton";
+
+import {
+  ContainerModal,
+  DivButtons,
+  DivInfos,
+  Form,
+  ModalContent,
+} from "./styles";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import { useDispatch } from "react-redux";
-import { closeModal } from "../../../store/modules/transactionModal/actions";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { closeModal } from "../../../store/modules/modalManagement/actions";
+
+import { entranceCategorys, exitCategorys } from "../../../utils/dataBase";
+import { RenderModalBackdropProps } from "react-overlays/cjs/Modal";
 
 interface ICreateTransaction {
   name?: string;
@@ -15,9 +29,30 @@ interface ICreateTransaction {
   description?: string;
 }
 
-const NewTransactionModal: React.FC<{ type: string }> = ({ type }) => {
+interface ICategory {
+  id: number;
+  name: string;
+}
+
+interface ITypemodalManagement {
+  modalManagement: { type: string };
+}
+
+const NewTransactionModal: React.FC = () => {
+  const [categories, setCategories] = useState<ICategory[]>([]);
   const dispatch = useDispatch();
-  console.log(type);
+
+  const modalManagement = useSelector(
+    (state: ITypemodalManagement) => state.modalManagement
+  );
+
+  useEffect(() => {
+    //será substituído por uma função redux com requisição no banco de dados
+    modalManagement.type === "entrance"
+      ? setCategories(entranceCategorys)
+      : setCategories(exitCategorys);
+  }, [modalManagement.type]);
+
   const schema = yup.object().shape({
     name: yup.string().required("Nome é obrigatório"),
     value: yup.number().required("Valor é obrigatório"),
@@ -33,52 +68,71 @@ const NewTransactionModal: React.FC<{ type: string }> = ({ type }) => {
     resolver: yupResolver(schema),
   });
 
+  const close = () => {
+    dispatch(closeModal());
+  };
+
+  const renderBackdrop = (props: RenderModalBackdropProps) => (
+    <ContainerModal {...props} />
+  );
   const createTransaction = (data: ICreateTransaction) => {
     console.log(data);
+    close();
   };
 
   return (
-    <ContainerModal>
-      <Modal className={type}>
-        <form onSubmit={handleSubmit(createTransaction)}>
+    <ModalContent
+      className={modalManagement.type}
+      show={!!modalManagement.type}
+      onHide={close}
+      renderBackdrop={renderBackdrop}
+      type={modalManagement.type}
+    >
+      <Form onSubmit={handleSubmit(createTransaction)}>
+        <GeneralInput
+          label="Nome"
+          register={register}
+          name={"name"}
+          error={errors.name?.message}
+          placeholder="Nome da transação..."
+        />
+        <DivInfos>
           <GeneralInput
-            label="Nome"
+            label="Valor"
             register={register}
-            name={"name"}
-            error={errors.name?.message}
-            placeholder="Nome da transação..."
+            name={"value"}
+            error={errors.value?.message && "O valor é inválido"}
+            type="float"
+            placeholder="Valor da transação..."
           />
-          <div>
-            <GeneralInput
-              label="Valor"
-              register={register}
-              name={"value"}
-              error={errors.value?.message}
-              type="float"
-              placeholder="Valor da transação..."
-            />
-            <GeneralInput
-              label="Data"
-              register={register}
-              name={"date"}
-              error={errors.date?.message}
-              type="date"
-            />
-          </div>
-          {/* <select></select> */}
           <GeneralInput
-            label="Descrição"
+            label="Data"
             register={register}
-            name={"description"}
-            error={errors.email?.message}
-            type="text"
-            placeholder="Descrição da transação..."
+            name={"date"}
+            error={errors.date?.message}
+            type="date"
           />
-          <button type="submit">enviar</button>
-        </form>
-        <button onClick={() => dispatch(closeModal())}>X</button>
-      </Modal>
-    </ContainerModal>
+        </DivInfos>
+        {/* <select></select> */}
+        <TextArea
+          label="Descrição"
+          register={register}
+          name={"description"}
+          error={errors.email?.message}
+          placeholder="Descrição da transação..."
+          rows={4}
+          cols={50}
+        />
+        <DivButtons>
+          <Button className="cancel" onClick={close}>
+            Cancelar
+          </Button>
+          <Button className="submit" type="submit">
+            Salvar
+          </Button>
+        </DivButtons>
+      </Form>
+    </ModalContent>
   );
 };
 

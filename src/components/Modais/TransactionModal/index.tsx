@@ -1,57 +1,74 @@
+import { RenderModalBackdropProps } from "react-overlays/cjs/Modal";
 import { ITrasaction } from "../../../interfaces";
+
 import {
   ContainerModal,
-  Modal,
+  ModalContent,
   ModalDescription,
   TitleDescription,
   TopModal,
   TopModalStep1,
   TopModalStep2,
 } from "./styles";
+
 import { IoClose } from "react-icons/io5";
 import { FiTrash, FiEdit3 } from "react-icons/fi";
-
-import moment from "moment";
-
-import { useState } from "react";
 import ModalConfirmation from "../ModalConfirmation";
 
-interface IProps {
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  transaction: ITrasaction;
-}
+import moment from "moment";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanObjTransaction } from "../../../store/modules/transaction/actions";
 
-interface IEventTarget extends React.MouseEvent<HTMLElement> {
-  tagName: string;
-}
+interface IProps {}
 
-const TransactionModal: React.FC<IProps> = ({ transaction, setModal }) => {
+const TransactionModal: React.FC = () => {
   const [confirmation, setConfirmation] = useState<boolean>(false);
 
-  const closeModal = (e: React.MouseEvent<HTMLElement>) => {
-    const tag = (e.target as unknown as IEventTarget).tagName;
-    tag === "SECTION" && setModal(false);
+  const dispatch = useDispatch();
+
+  const renderBackdrop = (props: RenderModalBackdropProps) => (
+    <ContainerModal {...props} />
+  );
+
+  const transaction = useSelector(
+    (state: { transactionValue: ITrasaction }) => state.transactionValue
+  );
+
+  const close = () => {
+    dispatch(cleanObjTransaction());
+  };
+
+  const confirmAction = () => {
+    setConfirmation(false);
+    console.log("DELETE");
   };
 
   return (
     <>
-      {confirmation && (
-        <ModalConfirmation
-          setConfirmation={setConfirmation}
-          setModal={setModal}
-        />
-      )}
-      <ContainerModal onClick={(e) => closeModal(e)}>
-        <Modal className={transaction.type}>
+      <ModalConfirmation
+        confirmation={confirmation}
+        setConfirmation={setConfirmation}
+        confirmAction={confirmAction}
+      />
+
+      <ModalContent
+        onHide={close}
+        show={!!transaction.id}
+        renderBackdrop={renderBackdrop}
+      >
+        <>
           <TopModal>
             <TopModalStep1>
               <h1>{transaction.title}</h1>
               <span>Data: {moment(transaction.date).format("DD/MM/YYYY")}</span>
-              <span>Valor: ${transaction.value.toFixed(2)}</span>
+              <span>
+                Valor: ${!!transaction.id && transaction.value.toFixed(2)}
+              </span>
               <span>{transaction.category}</span>
             </TopModalStep1>
             <TopModalStep2>
-              <IoClose size={25} onClick={() => setModal(false)} />
+              <IoClose size={25} onClick={close} />
               <FiEdit3 size={25} />
               <FiTrash size={25} onClick={() => setConfirmation(true)} />
             </TopModalStep2>
@@ -60,8 +77,8 @@ const TransactionModal: React.FC<IProps> = ({ transaction, setModal }) => {
           <ModalDescription>
             <p>{transaction.description}</p>
           </ModalDescription>
-        </Modal>
-      </ContainerModal>
+        </>
+      </ModalContent>
     </>
   );
 };

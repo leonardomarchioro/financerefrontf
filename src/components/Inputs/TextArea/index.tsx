@@ -1,13 +1,13 @@
 import { Container } from "./styles";
 
-interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   error: any;
   register: any;
   name: string;
 }
 
-const GeneralInput: React.FC<IProps> = ({
+const TextArea: React.FC<IProps> = ({
   label,
   register,
   name,
@@ -17,10 +17,10 @@ const GeneralInput: React.FC<IProps> = ({
   return (
     <Container error={!!error}>
       <label>{label}</label>
-      <input {...register(name)} {...rest} />
+      <textarea {...register(name)} {...rest} />
       <div>{!!error && <span>{error}</span>}</div>
     </Container>
   );
 };
 
-export default GeneralInput;
+export default TextArea;

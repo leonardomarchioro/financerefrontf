@@ -1,32 +1,40 @@
+import { RenderModalBackdropProps } from "react-overlays/cjs/Modal";
 import Button from "../../Buttons/GeneralButton";
-import { ButtonsContainer, ContainerModal, Modal } from "./styles";
+import { ButtonsContainer, ContainerModal, ModalContent } from "./styles";
 
-interface IState {
+interface IProps {
   setConfirmation: React.Dispatch<React.SetStateAction<boolean>>;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  confirmAction: () => void;
+  confirmation: boolean;
 }
 
-const ModalConfirmation: React.FC<IState> = ({ setConfirmation, setModal }) => {
-  const confirmDelete = () => {
-    console.log("DELETE");
-    setConfirmation(false);
-    setModal(false);
-  };
+const ModalConfirmation: React.FC<IProps> = ({
+  setConfirmation,
+  confirmAction,
+  confirmation,
+}) => {
+  const renderBackdrop = (props: RenderModalBackdropProps) => (
+    <ContainerModal {...props} />
+  );
 
   return (
-    <ContainerModal>
-      <Modal>
+    <ModalContent
+      onHide={() => setConfirmation(false)}
+      show={confirmation}
+      renderBackdrop={renderBackdrop}
+    >
+      <>
         <h1>Você deseja mesmo excluir está transação?</h1>
         <ButtonsContainer>
           <Button className="cancel" onClick={() => setConfirmation(false)}>
             Cancelar
           </Button>
-          <Button className="confirm" onClick={confirmDelete}>
+          <Button className="confirm" onClick={confirmAction}>
             Confirmar
           </Button>
         </ButtonsContainer>
-      </Modal>
-    </ContainerModal>
+      </>
+    </ModalContent>
   );
 };
 
