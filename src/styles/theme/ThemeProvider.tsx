@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { useSelector } from "react-redux";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, colors } from "../../styles/Themes";
+import { DefaultTheme, ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./Themes";
 
 interface IThemeState {
   theme: { mode: string };
@@ -10,8 +10,8 @@ interface IThemeState {
 const Theme: FC<{ children: ReactNode }> = ({ children }) => {
   const { mode } = useSelector((state: IThemeState) => state.theme);
 
-  const theme =
-    mode === "light" ? { ...lightTheme, colors } : { ...darkTheme, colors };
+  const theme: DefaultTheme =
+    mode === "light" ? { ...lightTheme } : { ...darkTheme };
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };

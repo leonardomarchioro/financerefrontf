@@ -1,15 +1,15 @@
-import thunk from "redux-thunk";
 import {
-  legacy_createStore as createStore,
-  combineReducers,
   applyMiddleware,
+  combineReducers,
+  legacy_createStore as createStore,
 } from "redux";
+import thunk from "redux-thunk";
 
-import { persistStore, persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import themeReducer from "./modules/theme/reducer";
 import modalManagementTransactionReducer from "./modules/modalManagement/reducer";
+import themeReducer from "./modules/theme/reducer";
 import transactionObjReducer from "./modules/transaction/reducer";
 
 const persistConfig = {

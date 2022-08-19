@@ -1,36 +1,14 @@
 import styled from "styled-components";
-import { Modal } from "react-overlays";
 
-export const ContainerModal = styled.section`
-  position: fixed;
-  z-index: 1080;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #000;
-  opacity: 0.5;
-`;
-
-export const ModalContent = styled(Modal)`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 1080;
+export const ModalContent = styled.div`
+  width: 100%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
-
-  padding: 20px;
-  min-width: 300px;
-  width: 200px;
-  height: 180px;
 
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
@@ -53,7 +31,7 @@ export const ButtonsContainer = styled.div`
   }
 
   button {
-    color: ${({ theme }) => theme.colors.white};
+    color: #fff;
   }
 
   .cancel {

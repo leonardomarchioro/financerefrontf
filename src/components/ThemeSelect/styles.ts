@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Box = styled.button`
-  background-color: ${({ theme }) =>
-    theme.backgroundColors.secondaryBackground};
+  background-color: ${(props) =>
+    props.theme.backgroundColors.secondaryBackground};
   width: 60px;
   height: 37px;
 
@@ -17,7 +17,7 @@ export const Button = styled.span`
   width: 55%;
   height: 90%;
   border-radius: 15px;
-  background: ${({ theme }) => theme.colors.grey};
+  background: #707070;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,11 +34,11 @@ export const Button = styled.span`
     border-radius: 50%;
     padding: 2px;
     color: #f5ff62;
-    background-color: ${({ theme }) => theme.colors.grey};
+    background-color: #707070;
     transition: 0.5s;
     &:hover {
       background-color: #f5ff62;
-      color: ${({ theme }) => theme.colors.grey};
+      color: #707070;
     }
   }
 `;

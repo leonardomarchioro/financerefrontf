@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Button from "../../Buttons/GeneralButton";
@@ -8,6 +7,7 @@ import GeneralInput from "../../Inputs/GeneralInput";
 import InputPassword from "../../Inputs/InputPassword";
 import { Container, FooterForm, InputsContainer, SpanText } from "./styles";
 import Router from "next/router";
+import { singUpSchema } from "../../../validations/user";
 
 interface ILogin {
   name?: string;
@@ -17,28 +17,12 @@ interface ILogin {
 }
 
 const FormSignUp: React.FC = () => {
-  const schema = yup.object().shape({
-    name: yup
-      .string()
-      .required("Nome é obrigatório")
-      .matches(/^[ a-zA-Z á]*$/, "Deve conter apenas letras"),
-    email: yup.string().required("Email é obrigatório").email("Email inválido"),
-    password: yup
-      .string()
-      .required("Password é obrigatório")
-      .matches(/^[0-9a-zA-Z$*&@#]{8,}$/, "Deve conter ao menos 8 caracteres"),
-    confirmPassword: yup
-      .string()
-      .required("Confirmação obrigatória")
-      .oneOf([yup.ref("password"), null], "Senhas diferentes"),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(singUpSchema),
   });
 
   const handleLogin = (data: ILogin) => {

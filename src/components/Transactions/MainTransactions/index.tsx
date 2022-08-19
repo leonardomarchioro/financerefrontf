@@ -1,5 +1,5 @@
 import { transactions } from "../../../utils/dataBase";
-import TransactionModal from "../../Modais/TransactionModal";
+import TransactionModal from "../../Modals/TransactionModal";
 import NoTransactions from "../EmptyTransactions";
 import TransactionsList from "../Transactions";
 import { Container } from "./styles";

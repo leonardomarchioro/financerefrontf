@@ -1,7 +1,7 @@
 import HeaderDash from "../components/Headers/DahsboardHeader";
 import AsideMenu from "../components/AsideMenu";
 import MainTransactions from "../components/Transactions/MainTransactions";
-import NewTransactionModal from "../components/Modais/NewTransactionModal";
+import NewTransactionModal from "../components/Modals/NewTransactionModal";
 
 import { Container, Main } from "../styles/Dashboard/styles";
 
@@ -12,8 +12,8 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <NewTransactionModal />
-      {showMenu && <AsideMenu setShowMenu={setShowMenu} showMenu={showMenu} />}
-      <Container>
+      <AsideMenu setShowMenu={setShowMenu} showMenu={showMenu} />
+      <Container showMenu={showMenu}>
         <HeaderDash setShowMenu={setShowMenu} />
         <Main>
           <MainTransactions />

@@ -5,11 +5,9 @@ interface IState {
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const HeaderDash: React.FC<IState> = ({ setShowMenu }) => {
-  const handle = () => {
-    setShowMenu(true);
-  };
+import { useState } from "react";
 
+const HeaderDash: React.FC<IState> = ({ setShowMenu }) => {
   return (
     <Header>
       <Titles>
@@ -18,7 +16,7 @@ const HeaderDash: React.FC<IState> = ({ setShowMenu }) => {
       </Titles>
       <MenuContainer>
         <span>Saldo total: $1.000.000,00</span>
-        <GiHamburgerMenu size={40} onClick={handle} />
+        <GiHamburgerMenu size={40} onClick={() => setShowMenu(true)} />
       </MenuContainer>
     </Header>
   );

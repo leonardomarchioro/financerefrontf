@@ -8,6 +8,7 @@ import GeneralInput from "../../Inputs/GeneralInput";
 import InputPassword from "../../Inputs/InputPassword";
 import { Container, FooterForm, InputsContainer, SpanText } from "./styles";
 import Router from "next/router";
+import { singInSchema } from "../../../validations/user";
 
 interface ILogin {
   email?: string;
@@ -15,20 +16,12 @@ interface ILogin {
 }
 
 const FormSignIn: React.FC = () => {
-  const schema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Email é obrigatório")
-      .email("Formato de email inválido"),
-    password: yup.string().required("Senha é obrigatória"),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(singInSchema),
   });
 
   const handleLogin = (data: ILogin) => {

@@ -1,4 +1,6 @@
-export const darkTheme = {
+import { DefaultTheme } from "styled-components";
+
+export const darkTheme: DefaultTheme = {
   backgroundColors: {
     primaryBackground: "#5A5A5A",
     secondaryBackground: "#282928",
@@ -45,7 +47,7 @@ export const darkTheme = {
   },
 };
 
-export const lightTheme = {
+export const lightTheme: DefaultTheme = {
   backgroundColors: {
     primaryBackground: "#FFFFFF",
     secondaryBackground: "#DAFFE9",
@@ -89,10 +91,4 @@ export const lightTheme = {
   inputColors: {
     backgroundColor: "#FFFFFF",
   },
-};
-
-export const colors = {
-  white: "#FFFFFF",
-  black: "#000000",
-  grey: "#707070",
 };

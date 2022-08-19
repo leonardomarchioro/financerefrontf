@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Modal } from "react-overlays";
+import { motion } from "framer-motion";
+
 export const BackgroundLayer = styled.div`
   position: fixed;
   z-index: 1040;
@@ -7,16 +9,28 @@ export const BackgroundLayer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #000;
-  opacity: 0.5;
+  background-color: transparent;
 `;
 
 export const Container = styled(Modal)`
   position: fixed;
+  background-color: transparent;
+  width: 300px;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  z-index: 1040;
+
+  @media screen and (max-width: 575px) {
+    width: 100%;
+  }
+`;
+
+export const MotionDiv = styled(motion.div)`
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
   width: 300px;
-  height: 100%;
+  height: 100vh;
   right: 0;
   top: 0;
   box-shadow: -12px 0px 4px rgb(0 0 0 / 25%);

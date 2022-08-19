@@ -1,41 +1,20 @@
-import styled from "styled-components";
-import { Modal } from "react-overlays";
+import styled, { DefaultTheme } from "styled-components";
 
-export const ContainerModal = styled.section`
-  position: fixed;
-  z-index: 1040;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #000;
-  opacity: 0.5;
-`;
-
-export const ModalContent = styled(Modal)`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 1040;
-
+export const ModalContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding: 20px;
-  min-width: 310px;
-  width: 50%;
-  height: 450px;
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
 
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
   color: ${({ theme }) => theme.textColors.titleSecondary};
   border-top: 20px solid
-    ${({ theme, type }) =>
+    ${({ theme, type }: { theme: DefaultTheme; type: string }) =>
       type === "entrance"
         ? theme.typesColors.entrancecolor
         : theme.typesColors.exitcolor};
@@ -43,11 +22,13 @@ export const ModalContent = styled(Modal)`
 
 export const Form = styled.form`
   width: 95%;
-
+  height: 95%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 20px;
+  justify-content: center;
+
+  gap: 50px;
 `;
 
 export const DivInfos = styled.div`
