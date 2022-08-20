@@ -28,8 +28,8 @@ interface IProps {
 }
 
 const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 1, x: "100%" },
+  open: { x: 0 },
+  closed: { x: "100%" },
 };
 
 const AsideMenu: React.FC<IProps> = ({ setShowMenu, showMenu }) => {
@@ -54,7 +54,7 @@ const AsideMenu: React.FC<IProps> = ({ setShowMenu, showMenu }) => {
     <>
       <Container
         show={showMenu}
-        onHide={() => setShowMenu(false)}
+        onHide={closeMenu}
         renderBackdrop={renderBackdrop}
       >
         <MotionDiv

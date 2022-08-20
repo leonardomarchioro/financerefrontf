@@ -4,7 +4,13 @@ import { setObjTransaction } from "../../../store/modules/transaction/actions";
 
 import { ITrasaction } from "../../../interfaces";
 
-import { Card, Content, Infos, ListContainer } from "./styles";
+import {
+  Content,
+  Infos,
+  ListContainer,
+  CardBody,
+  CardContainer,
+} from "./styles";
 
 const TransactionsList: React.FC<{ transactions: ITrasaction[] }> = ({
   transactions,
@@ -19,19 +25,21 @@ const TransactionsList: React.FC<{ transactions: ITrasaction[] }> = ({
     <>
       <ListContainer>
         {transactions.map((transaction) => (
-          <Card
+          <CardContainer
             key={transaction.id}
+            isHoverable
             className={transaction.type}
-            onClick={() => handleModal(transaction)}
           >
-            <h1>{transaction.title}</h1>
-            <Content>
-              <Infos>
-                <span>{moment(transaction.date).format("DD/MM/YYYY")}</span>
-                <span>${transaction.value.toFixed(2)}</span>
-              </Infos>
-            </Content>
-          </Card>
+            <CardBody onClick={() => handleModal(transaction)}>
+              <h1>{transaction.title}</h1>
+              <Content>
+                <Infos>
+                  <span>{moment(transaction.date).format("DD/MM/YYYY")}</span>
+                  <span>${transaction.value.toFixed(2)}</span>
+                </Infos>
+              </Content>
+            </CardBody>
+          </CardContainer>
         ))}
       </ListContainer>
     </>

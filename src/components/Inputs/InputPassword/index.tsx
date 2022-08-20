@@ -1,7 +1,7 @@
 import { FiEyeOff, FiEye } from "react-icons/fi";
 
-import { InputHTMLAttributes, useState } from "react";
-import { Container } from "./styles";
+import { useState } from "react";
+import { Container, Error, SInputPassword } from "./styles";
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -17,24 +17,16 @@ const InputPassword: React.FC<IProps> = ({
   name,
   ...rest
 }) => {
-  const [show, setShow] = useState("password");
-
-  const handleType = () => {
-    show === "text" ? setShow("password") : setShow("text");
-  };
-
   return (
-    <Container error={!!error}>
-      <label>{label}</label>
-      <input {...register(name)} type={show} {...rest} />
+    <Container>
+      <SInputPassword
+        {...register(name)}
+        error={!!error}
+        labelPlaceholder={label}
+        {...rest}
+      />
 
-      {show === "text" ? (
-        <FiEyeOff onClick={handleType} />
-      ) : (
-        <FiEye onClick={handleType} />
-      )}
-
-      <div>{!!error && <span>{error}</span>}</div>
+      <Error>{!!error && <span>{error}</span>}</Error>
     </Container>
   );
 };

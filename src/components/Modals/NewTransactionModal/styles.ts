@@ -2,10 +2,11 @@ import styled, { DefaultTheme } from "styled-components";
 
 export const ModalContent = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding: 20px;
+  gap: 2rem;
+  padding: 25px 20px;
   width: 100%;
   height: 100%;
   border-radius: 20px;
@@ -18,6 +19,10 @@ export const ModalContent = styled.div`
       type === "entrance"
         ? theme.typesColors.entrancecolor
         : theme.typesColors.exitcolor};
+
+  > h1 {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Form = styled.form`
@@ -29,17 +34,6 @@ export const Form = styled.form`
   justify-content: center;
 
   gap: 50px;
-`;
-
-export const DivInfos = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  > div {
-    width: 45%;
-  }
 `;
 
 export const DivButtons = styled.div`

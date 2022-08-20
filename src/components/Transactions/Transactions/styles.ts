@@ -45,18 +45,29 @@ export const ListContainer = styled.ul`
   }
 `;
 
-export const Card = styled.li`
+import { Card } from "@nextui-org/react";
+
+export const CardContainer = styled(Card)`
+  cursor: pointer;
+  display: flex;
+  width: 99%;
+  border-radius: 8px;
+  background-color: ${({ theme }) =>
+    theme.backgroundColors.transactionsBackground};
+`;
+
+export const CardBody = styled(Card.Body)`
   cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 99%;
-  border-radius: 6px;
+  width: 100%;
   padding: 10px;
   background-color: ${({ theme }) =>
     theme.backgroundColors.transactionsBackground};
   color: ${({ theme }) => theme.textColors.titleSecondary};
+  overflow-y: hidden;
 
   &:hover {
     transform: scale(0.98);
@@ -65,6 +76,7 @@ export const Card = styled.li`
   > h1 {
     font-weight: 600;
     font-size: 20px;
+    margin: 0;
   }
 
   @media screen and (max-width: 768px) {

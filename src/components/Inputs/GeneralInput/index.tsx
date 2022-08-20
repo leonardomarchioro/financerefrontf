@@ -1,4 +1,4 @@
-import { Container } from "./styles";
+import { Container, Error, SInput } from "./styles";
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -15,10 +15,14 @@ const GeneralInput: React.FC<IProps> = ({
   ...rest
 }) => {
   return (
-    <Container error={!!error}>
-      <label>{label}</label>
-      <input {...register(name)} {...rest} />
-      <div>{!!error && <span>{error}</span>}</div>
+    <Container>
+      <SInput
+        {...register(name)}
+        labelPlaceholder={label}
+        {...rest}
+        error={!!error}
+      />
+      <Error>{!!error && <span>{error}</span>}</Error>
     </Container>
   );
 };

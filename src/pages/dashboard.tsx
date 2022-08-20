@@ -6,11 +6,13 @@ import NewTransactionModal from "../components/Modals/NewTransactionModal";
 import { Container, Main } from "../styles/Dashboard/styles";
 
 import { useState } from "react";
+import TransactionModal from "../components/Modals/TransactionModal";
 
 const Dashboard: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <>
+      <TransactionModal />
       <NewTransactionModal />
       <AsideMenu setShowMenu={setShowMenu} showMenu={showMenu} />
       <Container showMenu={showMenu}>

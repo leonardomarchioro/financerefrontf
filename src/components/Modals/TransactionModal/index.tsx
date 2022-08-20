@@ -1,5 +1,4 @@
 import { ITrasaction } from "../../../interfaces";
-
 import {
   ModalContent,
   ModalDescription,
@@ -14,13 +13,14 @@ import { FiTrash, FiEdit3 } from "react-icons/fi";
 import ModalConfirmation from "../ModalConfirmation";
 
 import moment from "moment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanObjTransaction } from "../../../store/modules/transaction/actions";
 import Modal from "../ModalContainer";
 
 const TransactionModal: React.FC = () => {
   const [confirmation, setConfirmation] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -29,13 +29,21 @@ const TransactionModal: React.FC = () => {
   );
 
   const close = () => {
-    dispatch(cleanObjTransaction());
+    setIsOpen(false);
+    return new Promise(() => {
+      setTimeout(() => dispatch(cleanObjTransaction()), 800);
+    });
   };
 
   const confirmAction = () => {
     setConfirmation(false);
+    dispatch(cleanObjTransaction());
     console.log("DELETE");
   };
+
+  useEffect(() => {
+    !!transaction.id && setIsOpen(true);
+  }, [transaction.id]);
 
   return (
     <>
@@ -44,7 +52,12 @@ const TransactionModal: React.FC = () => {
         setConfirmation={setConfirmation}
         confirmAction={confirmAction}
       />
-      <Modal close={close} show={!!transaction.id} height="70%">
+      <Modal
+        close={close}
+        show={!!transaction.id}
+        height="70%"
+        isOpenAnimate={isOpen}
+      >
         <ModalContent type={transaction.type}>
           <>
             <TopModal>

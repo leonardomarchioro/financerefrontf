@@ -2,7 +2,7 @@ import GeneralInput from "../../Inputs/GeneralInput";
 import TextArea from "../../Inputs/TextArea";
 import Button from "../../Buttons/GeneralButton";
 
-import { DivButtons, DivInfos, Form, ModalContent } from "./styles";
+import { DivButtons, Form, ModalContent } from "./styles";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,6 +16,7 @@ import { closeModal } from "../../../store/modules/modalManagement/actions";
 import { entranceCategorys, exitCategorys } from "../../../utils/dataBase";
 
 import Modal from "../ModalContainer";
+import DateInput from "../../Inputs/DateInput";
 
 interface ICreateTransaction {
   name?: string;
@@ -62,9 +63,13 @@ const NewTransactionModal: React.FC = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [isOpen, setIsOpen] = useState(false);
 
   const close = () => {
-    dispatch(closeModal());
+    setIsOpen(false);
+    return new Promise(() => {
+      setTimeout(() => dispatch(closeModal()), 800);
+    });
   };
 
   const createTransaction = (data: ICreateTransaction) => {
@@ -72,34 +77,35 @@ const NewTransactionModal: React.FC = () => {
     close();
   };
 
+  useEffect(() => {
+    !!modalManagement.type && setIsOpen(true);
+  }, [modalManagement.type]);
+
   return (
-    <Modal show={!!modalManagement.type} close={close}>
+    <Modal show={!!modalManagement.type} close={close} isOpenAnimate={isOpen}>
       <ModalContent type={modalManagement.type}>
+        <h1>Cadastrar Transação</h1>
         <Form onSubmit={handleSubmit(createTransaction)}>
           <GeneralInput
             label="Nome"
             register={register}
             name={"name"}
             error={errors.name?.message}
-            placeholder="Nome da transação..."
           />
-          <DivInfos>
-            <GeneralInput
-              label="Valor"
-              register={register}
-              name={"value"}
-              error={errors.value?.message && "O valor é inválido"}
-              type="float"
-              placeholder="Valor da transação..."
-            />
-            <GeneralInput
-              label="Data"
-              register={register}
-              name={"date"}
-              error={errors.date?.message}
-              type="date"
-            />
-          </DivInfos>
+          <GeneralInput
+            label="Valor"
+            register={register}
+            name={"value"}
+            error={errors.value?.message && "O valor é inválido"}
+            type="number"
+          />
+          <DateInput
+            label="Data"
+            register={register}
+            name={"date"}
+            error={errors.date?.message}
+          />
+
           {/* <select></select> */}
           <TextArea
             label="Descrição"

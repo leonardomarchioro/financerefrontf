@@ -4,13 +4,13 @@ export const Container = styled.form`
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
   width: 95%;
-  height: 620px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 45px;
-  padding: 10px;
+  padding: 25px 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);
 
@@ -25,7 +25,7 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 25px;
+  gap: 40px;
 
   > div {
     width: 80%;

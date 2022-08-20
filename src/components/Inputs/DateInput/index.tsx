@@ -1,13 +1,13 @@
-import { Container, Error, STextarea } from "./styles";
+import { Container, Error, SInput } from "./styles";
 
-interface IProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error: any;
   register: any;
   name: string;
 }
 
-const TextArea: React.FC<IProps> = ({
+const DateInput: React.FC<IProps> = ({
   label,
   register,
   name,
@@ -16,15 +16,16 @@ const TextArea: React.FC<IProps> = ({
 }) => {
   return (
     <Container>
-      <STextarea
-        labelPlaceholder={label}
-        error={!!error}
+      <SInput
         {...register(name)}
+        label={label}
         {...rest}
+        type="date"
+        error={!!error}
       />
       <Error>{!!error && <span>{error}</span>}</Error>
     </Container>
   );
 };
 
-export default TextArea;
+export default DateInput;

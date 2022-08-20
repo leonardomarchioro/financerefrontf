@@ -27,11 +27,12 @@ export const ButtonsContainer = styled.div`
   gap: 20px;
 
   > div {
-    width: 100px;
+    width: 80%;
   }
 
   button {
     color: #fff;
+    padding: 10px;
   }
 
   .cancel {

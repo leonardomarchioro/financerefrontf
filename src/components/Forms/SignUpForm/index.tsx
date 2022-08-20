@@ -8,6 +8,7 @@ import InputPassword from "../../Inputs/InputPassword";
 import { Container, FooterForm, InputsContainer, SpanText } from "./styles";
 import Router from "next/router";
 import { singUpSchema } from "../../../validations/user";
+import { Spacer } from "@nextui-org/react";
 
 interface ILogin {
   name?: string;
@@ -56,6 +57,7 @@ const FormSignUp: React.FC = () => {
           error={errors.password?.message}
           placeholder="Sua senha..."
         />
+        <Spacer y={0} />
         <InputPassword
           label="Confirmação de senha"
           register={register}
